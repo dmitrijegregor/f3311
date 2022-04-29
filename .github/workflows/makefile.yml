@@ -14,8 +14,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
-    - name: configure
-      run: ./env
+  
       
     - name: Install dependencies
       run:  make O=out ARCH=arm bassoon_defconfig
