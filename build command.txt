@@ -1,0 +1,8 @@
+Build cmd:
+Step 1. cd codebase
+Step 2. source ./env.sh
+Step 3. cd kernel-3.18
+Step 4. mkdir out/
+Step 5. make O=out ARCH=arm bassoon_defconfig
+Step 6. make -j8 O=out ARCH=arm
+Step 7. //check out folder.

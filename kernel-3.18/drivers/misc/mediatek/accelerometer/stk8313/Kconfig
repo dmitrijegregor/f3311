@@ -1,0 +1,9 @@
+
+config MTK_STK8313
+       bool "STK8313 for Mediatek package"
+	default n
+	help
+	  It support different accelerometer sensor.
+          If this option is set,
+	  it will support
+          STK8313 Accelerometer.
