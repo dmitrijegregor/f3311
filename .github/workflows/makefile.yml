@@ -29,6 +29,6 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: my_kernel
-        path: kernel-3.18/out
+        path: final
       
     
