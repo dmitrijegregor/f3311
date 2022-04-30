@@ -1,0 +1,36 @@
+name: Makefile C4
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/checkout@v2
+  
+      
+    - name: Install dependencies
+      run:  source ./env.sh; cd kernel-3.18; make O=out ARCH=arm bassoon_defconfig
+      
+    - name: Run check
+      run: source ./env.sh; cd kernel-3.18; make -j8 O=out ARCH=arm
+      
+    - name: Ls
+      run: mkdir  /home/runner/work/f3311/f3311/release; cp /home/runner/work/f3311/f3311/kernel-3.18/out/vmlinux  /home/runner/work/f3311/f3311/release/vmlinux 
+
+
+
+    - name: copy file
+      uses: actions/upload-artifact@v2
+      with:
+        name: my_doc1
+        path:  /home/runner/work/f3311/f3311/release
+  
+    
