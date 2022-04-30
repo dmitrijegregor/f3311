@@ -23,7 +23,7 @@ jobs:
       run: source ./env.sh; cd kernel-3.18; make -j8 O=out ARCH=arm KERNELRELEASE=3.18.19+
       
     - name: prepare copy
-      run: cd kernel-3.18/out; mkdir final;  find . -name '*ko' -type f -exec cp '{}' final \; ; cp arch/arm/boot/* final;
+      run: cd kernel-3.18/out; mkdir final;  find . -name '*ko' -type f -exec cp '{}' final \; 2>/dev/null ; cp arch/arm/boot/* final 2>/dev/null ;
       
     - name: copy file
       uses: actions/upload-artifact@v2
