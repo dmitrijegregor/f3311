@@ -23,7 +23,7 @@ jobs:
       run: source ./env.sh; cd kernel-3.18; make -j8 O=out ARCH=arm
       
     - name: Ls
-      run: cd /home/runner/work/f3311/f3311/kernel-3.18/out; ls
+      run: mkdir got: cd /home/runner/work/f3311/f3311/kernel-3.18/out; ls
 
 
     - name: copy file
