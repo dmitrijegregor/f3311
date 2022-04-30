@@ -20,6 +20,6 @@ jobs:
       run:  cd kernel-3.18; make O=out ARCH=arm bassoon_defconfig
       
     - name: Run check
-      run: make -j8 O=out ARCH=arm
+      run: cd kernel-3.18; make -j8 O=out ARCH=arm
       
     
