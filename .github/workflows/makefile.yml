@@ -26,7 +26,6 @@ jobs:
       run: cd /home/runner/work/f3311/f3311/kernel-3.18/out; ls
 
 
-
     - name: copy file
       uses: actions/upload-artifact@v2
       with:
