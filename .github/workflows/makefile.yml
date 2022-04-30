@@ -1,0 +1,28 @@
+name: Makefile CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+  
+      
+    - name: Install dependencies
+      run:  source ./env.sh; cd kernel-3.18; make O=out ARCH=arm KERNELRELEASE=3.18.19+ bassoon_defconfig
+      
+    - name: compil
+      run: source ./env.sh; cd kernel-3.18; make -j8 O=out ARCH=arm KERNELRELEASE=3.18.19+
+      
+    - name: po copy
+      run: mkdir final; cp arch/arm/boot/zImage final; find . -name '*ko' -exec cp '{}' final \;
+      
+    
