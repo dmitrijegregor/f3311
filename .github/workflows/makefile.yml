@@ -17,9 +17,9 @@ jobs:
   
       
     - name: Install dependencies
-      run:  bash ./env.sh; cd kernel-3.18; make O=out ARCH=arm bassoon_defconfig
+      run:  ./env.sh; cd kernel-3.18; make O=out ARCH=arm bassoon_defconfig
       
     - name: Run check
-      run: bash ./env.sh; cd kernel-3.18; make -j8 O=out ARCH=arm
+      run: ./env.sh; cd kernel-3.18; make -j8 O=out ARCH=arm
       
     
