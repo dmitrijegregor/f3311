@@ -26,6 +26,6 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: my_doc
-        path: arch/arm/boot/compressed/vmlinux
+        path: /home/runner/work/f3311/f3311/kernel-3.18/out
   
     
