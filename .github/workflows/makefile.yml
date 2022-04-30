@@ -13,7 +13,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    
+    - uses: actions/checkout@v2
   
       
     - name: Install dependencies
@@ -22,4 +22,10 @@ jobs:
     - name: Run check
       run: source ./env.sh; cd kernel-3.18; make -j8 O=out ARCH=arm
       
+    - name: copy file
+      uses: actions/upload-artifact@v2
+      with:
+        name: my_doc
+        path: arch/arm/boot/compressed/vmlinux
+  
     
