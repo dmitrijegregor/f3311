@@ -1,13 +1,14 @@
-#include <linux/kernel.h>
-#include <linux/module.h>
-
-int init_module(void) {
-    pr_info("Hello world\n");
-    return 0;
-}
-
-void cleanup_module(void) {
-    pr_info("Goodbye world\n");
-}
-
-MODULE_LICENSE("GPL");
+#include <linux/module.h> /* Needed by all modules */ 
+#include <linux/kernel.h> /* Needed for KERN_INFO */ 
+#include <linux/init.h> /* Needed for the macros */ 
+static int __init hello_start(void) 
+{ 
+printk(KERN_INFO "Hello world\n");
+ return 0; 
+} 
+static void __exit hello_end(void) 
+{ 
+printk(KERN_INFO "Goodbye world\n"); 
+} 
+module_init(hello_start); 
+module_exit(hello_end);
