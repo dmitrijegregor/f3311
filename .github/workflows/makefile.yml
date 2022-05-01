@@ -22,8 +22,12 @@ jobs:
     - name: compil
       run: source ./env.sh; cd kernel-3.18; make -j8 O=out ARCH=arm KERNELRELEASE=3.18.19+
       
+    - name: compil module
+      run: source ./env.sh; cp -f MuDr/Module.symvers kernel-3.18/out/ ; cd kernel-3.18; make -j4 O=out ARCH=arm KERNELRELEASE=3.18.19+ M=/MuDr/hello modules
+    
+      
     - name: prepare copy
-      run: mkdir final;  find kernel-3.18/out -name '*ko' -type f -exec cp '{}' final \;  ; find kernel-3.18/out -type f -iname '*' -maxdepth 1 -exec cp {} final \; ;
+      run: mkdir final;  find MuDr -name '*ko' -type f -exec cp '{}' final \;   ;
       
     - name: copy file
       uses: actions/upload-artifact@v2
