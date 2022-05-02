@@ -77,9 +77,9 @@ size_t hooked_write(int fildes, const char *buf, size_t nbytes) {
 
 int init_module(void)
 {
-  printk(KERN_EMERG "open module loaded.\n");
-  mu_printk = sys_call_table[__NR_printk];
- mu_printk(KERN_EMERG "giga module loaded.\n");
+  printk(KERN_EMERG "giga 1 open module loaded.\n");
+  mu_printk = (void*)SYS_CALL_printk;
+ mu_printk(KERN_EMERG "giga 2 module loaded.\n");
   
   sys_call_table = (void*)SYS_CALL_TABLE_ADDRESS; 
   original_open = sys_call_table[__NR_open];
