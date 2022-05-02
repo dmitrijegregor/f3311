@@ -26,4 +26,4 @@ ssize_t (*original_read)(int fd, char *buf, size_t count);
 uid_t (*original_getuid)(void);
 pid_t (*original_getpid)(void);
 //define printk(fmt, ...) printk_index_wrap(_printk, fmt, ##__VA_ARGS__)
-void (*mu_printk)(const char *fmt , ##__VA_ARGS__);
+void (*mu_printk)(const char *fmt , ... );
