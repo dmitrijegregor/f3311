@@ -19,23 +19,17 @@ jobs:
     - name: Install dependencies
       run:  source ./env.sh; cd kernel-3.18; make O=out ARCH=arm KERNELRELEASE=3.18.19+ bassoon_defconfig
       
-    - name: compil
-      run: source ./env.sh; cd kernel-3.18; make -j8 O=out ARCH=arm KERNELRELEASE=3.18.19+
+
+
+    - name: compilPrepare
+      run: source ./env.sh; cp -f MuDr/Module.symvers kernel-3.18/ ; cp -f MuDr/Module.symvers kernel-3.18/out/ ; cd kernel-3.18; make -j8 O=out ARCH=arm KERNELRELEASE=3.18.19+ prepare
       
-    - name: compil module
-      run: source ./env.sh; cp -f MuDr/Module.symvers kernel-3.18/ ; cp -f MuDr/Module.symvers kernel-3.18/out/ ; cd kernel-3.18; make -j4 O=out ARCH=arm KERNELRELEASE=3.18.19+ M=/home/runner/work/f3311/f3311/MuDr/hello modules
-   
-    - name: compil module1
-      run: source ./env.sh; cp -f MuDr/Module.symvers kernel-3.18/ ; cp -f MuDr/Module.symvers kernel-3.18/out/ ; cd kernel-3.18; make -j4 O=out ARCH=arm KERNELRELEASE=3.18.19+ M=/home/runner/work/f3311/f3311/MuDr/Read modules
-    
-      
-    - name: prepare copy
-      run: mkdir final;  find . -name '*ko' -type f -exec cp '{}' final \;   ;
-      
+     
+ 
     - name: copy file
       uses: actions/upload-artifact@v2
       with:
         name: my_kernel
-        path: final
+        path: kernel-3.18/out
       
     
