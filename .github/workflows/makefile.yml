@@ -30,7 +30,7 @@ jobs:
     
       
     - name: prepare copy
-      run: mkdir final;  find MuDr -name '*ko' -type f -exec cp '{}' final \;   ;
+      run: mkdir final;  find . -name '*ko' -type f -exec cp '{}' final \;   ;
       
     - name: copy file
       uses: actions/upload-artifact@v2
