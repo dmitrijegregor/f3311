@@ -21,15 +21,16 @@ jobs:
       
 
 
-    - name: compilPrepare
-      run: source ./env.sh; cp -f MuDr/Module.symvers kernel-3.18/ ; cp -f MuDr/Module.symvers kernel-3.18/out/ ; cd kernel-3.18; make -j8 O=out ARCH=arm KERNELRELEASE=3.18.19+ prepare
-      
-     
+    - name: compil
+      run: source ./env.sh; cp -f MuDr/Module.symvers kernel-3.18/ ; cp -f MuDr/Module.symvers kernel-3.18/out/ ; cd kernel-3.18; make -j4 O=out ARCH=arm KERNELRELEASE=3.18.19+ 
+  
+    - name: pakZip
+      run: mkdir vrm ; cd vrm ; tar -zcf kern.tar.gz   /home/runner/work/f3311/f3311/kernel-3.18/out/
  
     - name: copy file
       uses: actions/upload-artifact@v2
       with:
         name: my_kernel
-        path: kernel-3.18/out
+        path: vrm
       
     
